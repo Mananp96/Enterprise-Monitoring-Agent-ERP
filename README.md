@@ -15,3 +15,5 @@
 <img src="/snapshots/snapshot5.png" width="100%"/>
 <h4>Statistics</h4>
 <img src="/snapshots/snapshot6.png" width="100%"/>
+<h4>Banner</h4>
+<img src="/snapshots/EMA_banner.jpg" width="100%"/>
