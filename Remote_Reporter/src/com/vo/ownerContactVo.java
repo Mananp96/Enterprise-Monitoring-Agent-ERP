@@ -11,40 +11,43 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ownercontact")
+@Table(name = "ownercontact")
 public class ownerContactVo {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int contactid;
-	
-	@Column(name="first_name")
+
+	@Column(name = "first_name")
 	private String firstName;
-	
-	@Column(name="last_name")
+
+	@Column(name = "last_name")
 	private String lastName;
-	
-	@ManyToOne ownerCompanyVo ownerCompanyVo;
-	
-	@Column(name="email")
+
+	@ManyToOne
+	ownerCompanyVo ownerCompanyVo;
+
+	@Column(name = "email")
 	private String email;
-	
-	@Column(name="tags")
+
+	@Column(name = "tags")
 	private String tags;
-	
-	@Column(name="phone")
+
+	@Column(name = "phone")
 	private String phone;
-	
-	@Column(name="contactDate")
+
+	@Column(name = "contactDate")
 	private Date contactDate;
-	
-	@Column(name="address")
+
+	@Column(name = "address")
 	private String address;
-	
-	@ManyToOne country_vo country_vo;
-	
-    @ManyToOne loginVo loginVo;
-	
+
+	@ManyToOne
+	country_vo country_vo;
+
+	@ManyToOne
+	loginVo loginVo;
+
 	public loginVo getLoginVo() {
 		return loginVo;
 	}
@@ -52,8 +55,6 @@ public class ownerContactVo {
 	public void setLoginVo(loginVo loginVo) {
 		this.loginVo = loginVo;
 	}
-
-
 
 	public int getContactid() {
 		return contactid;
@@ -134,6 +135,4 @@ public class ownerContactVo {
 	public void setContactDate(Date contactDate) {
 		this.contactDate = contactDate;
 	}
-
-	
 }

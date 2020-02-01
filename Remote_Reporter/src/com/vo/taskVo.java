@@ -11,50 +11,52 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ownerTask")
+@Table(name = "ownerTask")
 
 public class taskVo {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int taskid;
-	
-	@Column(name="TaskName")
+
+	@Column(name = "TaskName")
 	private String taskName;
-	
-	@ManyToOne ownerCompanyVo ownerCompanyVo;
-	
-	@Column(name="Category")
+
+	@ManyToOne
+	ownerCompanyVo ownerCompanyVo;
+
+	@Column(name = "Category")
 	private String category;
-	
-	@Column(name="milestone")
+
+	@Column(name = "milestone")
 	private String milestone;
 	
-	@Column(name="closeDate")
+	@Column(name = "closeDate")
 	private Date closeDate;
-	
-	@Column(name="taskDate")
-	private Date taskDate;
-	
-	@Column(name="taskTime")
-	private String taskTime;
-	
-	@ManyToOne ownerContactVo ownerContactVo;
-	
 
-	@Column(name="taskStatus")
+	@Column(name = "taskDate")
+	private Date taskDate;
+
+	@Column(name = "taskTime")
+	private String taskTime;
+
+	@ManyToOne
+	ownerContactVo ownerContactVo;
+
+	@Column(name = "taskStatus")
 	private String taskStatus;
-	
-	@Column(name="taskPriority")
+
+	@Column(name = "taskPriority")
 	private String taskPriority;
-	
-	@Column(name="tags")
+
+	@Column(name = "tags")
 	private String tags;
-	
-	@Column(name="taskDesc")
+
+	@Column(name = "taskDesc")
 	private String taskDesc;
-	
-   @ManyToOne loginVo loginVo;
-	
+
+	@ManyToOne
+	loginVo loginVo;
+
 	public loginVo getLoginVo() {
 		return loginVo;
 	}
@@ -62,7 +64,6 @@ public class taskVo {
 	public void setLoginVo(loginVo loginVo) {
 		this.loginVo = loginVo;
 	}
-
 
 	public int getTaskid() {
 		return taskid;
@@ -128,7 +129,6 @@ public class taskVo {
 		this.taskTime = taskTime;
 	}
 
-
 	public ownerContactVo getOwnerContactVo() {
 		return ownerContactVo;
 	}
@@ -136,7 +136,7 @@ public class taskVo {
 	public void setOwnerContactVo(ownerContactVo ownerContactVo) {
 		this.ownerContactVo = ownerContactVo;
 	}
-	
+
 	public String getTaskStatus() {
 		return taskStatus;
 	}
@@ -168,7 +168,4 @@ public class taskVo {
 	public void setTaskDesc(String taskDesc) {
 		this.taskDesc = taskDesc;
 	}
-
-	
-
 }

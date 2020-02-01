@@ -11,44 +11,46 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ownerCompany")
+@Table(name = "ownerCompany")
 public class ownerCompanyVo {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int companyid;
-	
-	@Column(name="first_name")
+
+	@Column(name = "first_name")
 	private String firstName;
-	
-	@Column(name="last_name")
+
+	@Column(name = "last_name")
 	private String lastName;
-	
-	@Column(name="company_name")
+
+	@Column(name = "company_name")
 	private String companyName;
-	
-	@Column(name="email")
+
+	@Column(name = "email")
 	private String email;
-	
-	@Column(name="tags")
+
+	@Column(name = "tags")
 	private String tags;
-	
-	@Column(name="company_url")
+
+	@Column(name = "company_url")
 	private String companyUrl;
-	
-	@Column(name="companyDate")
+
+	@Column(name = "companyDate")
 	private Date companyDate;
 
-	@Column(name="phone")
+	@Column(name = "phone")
 	private String phone;
-	
-	@Column(name="address")
+
+	@Column(name = "address")
 	private String address;
-	
-	@ManyToOne country_vo country_vo;
-	
-    @ManyToOne loginVo loginVo;
-	
+
+	@ManyToOne
+	country_vo country_vo;
+
+	@ManyToOne
+	loginVo loginVo;
+
 	public loginVo getLoginVo() {
 		return loginVo;
 	}
@@ -56,8 +58,6 @@ public class ownerCompanyVo {
 	public void setLoginVo(loginVo loginVo) {
 		this.loginVo = loginVo;
 	}
-
-
 
 	public country_vo getCountry_vo() {
 		return country_vo;
@@ -106,7 +106,7 @@ public class ownerCompanyVo {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public Date getCompanyDate() {
 		return companyDate;
 	}
@@ -122,7 +122,7 @@ public class ownerCompanyVo {
 	public void setTags(String tags) {
 		this.tags = tags;
 	}
-	
+
 	public String getCompanyUrl() {
 		return companyUrl;
 	}
@@ -146,6 +146,4 @@ public class ownerCompanyVo {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	
 }

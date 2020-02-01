@@ -12,7 +12,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.controller.contactProfile;
 import com.vo.dealVo;
 import com.vo.ownerContactVo;
 
@@ -23,7 +22,6 @@ public class dealDao {
 	SessionFactory sessionFactory;
 
 	public void insert(dealVo dealvo) {
-		// TODO Auto-generated method stub
 		try {
 			Session session = sessionFactory.openSession();
 			Transaction tr = session.beginTransaction();
@@ -39,13 +37,12 @@ public class dealDao {
 	}
 
 	public List viewDeal(dealVo dealVo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List ls = new ArrayList();
 		try {
 
-			Query que = session.createQuery("from dealVo where loginVo = '"+dealVo.getLoginVo().getLogid()+"'");
+			Query que = session.createQuery("from dealVo where loginVo = '" + dealVo.getLoginVo().getLogid() + "'");
 			ls = que.list();
 			tr.commit();
 
@@ -55,11 +52,9 @@ public class dealDao {
 			e.printStackTrace();
 		}
 		return ls;
-
 	}
 
 	public List edit(dealVo dealvo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List editlist = new ArrayList();
@@ -77,10 +72,9 @@ public class dealDao {
 	}
 
 	public void delete_deal(dealVo dealvo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
-
+		
 		try {
 
 			session.delete(dealvo);
@@ -109,12 +103,10 @@ public class dealDao {
 	}
 
 	public void update_deal(dealVo dealvo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 
 		try {
-
 			session.saveOrUpdate(dealvo);
 
 			tr.commit();
@@ -130,7 +122,6 @@ public class dealDao {
 		Transaction tr = session.beginTransaction();
 		List dealContactlist = new ArrayList();
 		try {
-
 			Query que = session
 					.createQuery("from dealVo where ownerContactVo = '" + contactprofilevo.getContactid() + "'");
 			dealContactlist = que.list();
@@ -144,7 +135,6 @@ public class dealDao {
 	}
 
 	public void deleteContactDeal(ownerContactVo cvo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 
@@ -162,13 +152,13 @@ public class dealDao {
 	}
 
 	public List countDeal() {
-
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List<dealVo> dealContactlist = new ArrayList();
 		try {
 
-			SQLQuery que = session.createSQLQuery("SELECT COUNT(dealid),MONTH(dealDate) FROM `ownerdeal` GROUP BY MONTH(dealDate)");
+			SQLQuery que = session
+					.createSQLQuery("SELECT COUNT(dealid),MONTH(dealDate) FROM `ownerdeal` GROUP BY MONTH(dealDate)");
 			dealContactlist = que.list();
 			tr.commit();
 			session.clear();
@@ -176,7 +166,6 @@ public class dealDao {
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
-		//System.err.println("dealVo GROUP BY MONTH(dealDate)"+dealContactlist.);
 		return dealContactlist;
 	}
 
@@ -186,7 +175,7 @@ public class dealDao {
 		List dealprofile = new ArrayList();
 		try {
 
-			Query que = session.createQuery("from dealVo where id='"+ dealvo.getDealid()+"'");
+			Query que = session.createQuery("from dealVo where id='" + dealvo.getDealid() + "'");
 			dealprofile = que.list();
 			tr.commit();
 			session.clear();
@@ -195,8 +184,6 @@ public class dealDao {
 			e.printStackTrace();
 		}
 		return dealprofile;
-		
 	}
 
-	
 }

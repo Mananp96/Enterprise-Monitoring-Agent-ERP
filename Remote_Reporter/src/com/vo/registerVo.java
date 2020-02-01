@@ -8,69 +8,63 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="user_register")
+@Table(name = "user_register")
 public class registerVo {
-		
-		@Id
-		@GeneratedValue(strategy=GenerationType.AUTO)
-		private int regid;
-		
-		@Column(name="first_name")
-		private String firstName;
-		
-		@Column(name="last_name")
-		private String lastName;
-		
-		@Column(name="company_name")
-		private String companyName;
-		
-		
-		
-		@ManyToOne 
-		private loginVo lvo;
-		
 
-		public loginVo getLvo() {
-			return lvo;
-		}
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int regid;
 
-		public void setLvo(loginVo lvo) {
-			this.lvo = lvo;
-		}
+	@Column(name = "first_name")
+	private String firstName;
 
-		public int getRegid() {
-			return regid;
-		}
+	@Column(name = "last_name")
+	private String lastName;
+	
+	@Column(name = "company_name")
+	private String companyName;
 
-		public void setRegid(int regid) {
-			this.regid = regid;
-		}
+	@ManyToOne
+	private loginVo lvo;
 
-		public String getFirstName() {
-			return firstName;
-		}
+	public loginVo getLvo() {
+		return lvo;
+	}
 
-		public void setFirstName(String firstName) {
-			this.firstName = firstName;
-		}
+	public void setLvo(loginVo lvo) {
+		this.lvo = lvo;
+	}
 
-		public String getLastName() {
-			return lastName;
-		}
+	public int getRegid() {
+		return regid;
+	}
 
-		public void setLastName(String lastName) {
-			this.lastName = lastName;
-		}
+	public void setRegid(int regid) {
+		this.regid = regid;
+	}
 
-		public String getCompanyName() {
-			return companyName;
-		}
+	public String getFirstName() {
+		return firstName;
+	}
 
-		public void setCompanyName(String companyName) {
-			this.companyName = companyName;
-		}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-		
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
 }

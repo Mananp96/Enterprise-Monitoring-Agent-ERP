@@ -1,15 +1,10 @@
 package com.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,9 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.dao.ContactNoteDao;
 import com.dao.ownerContactDao;
 import com.vo.ContactNoteVo;
-import com.vo.country_vo;
-import com.vo.dealVo;
-import com.vo.ownerCompanyVo;
 import com.vo.ownerContactVo;
 
 @Controller
@@ -45,8 +37,8 @@ public class ownerContactNote {
 
 	}// end of method add contact note
 	/*
-	 * @RequestMapping(value="/viewcontactNote.do",method=RequestMethod.GET)
-	 * public ModelAndView viewCompany(@ModelAttribute ContactNoteVo
+	 * @RequestMapping(value="/viewcontactNote.do",method=RequestMethod.GET) public
+	 * ModelAndView viewCompany(@ModelAttribute ContactNoteVo
 	 * contactNoteVo,HttpServletRequest req) { int contactid; contactid =
 	 * Integer.parseInt(req.getParameter("id")); ownerContactVo contactprofilevo
 	 * =new ownerContactVo(); contactprofilevo.setContactid(contactid); List
@@ -67,11 +59,10 @@ public class ownerContactNote {
 		int contactid = Integer.parseInt(req.getParameter("id"));
 		HttpSession session = req.getSession();
 		session.setAttribute("contactid", contactid);
-		
+
 		ownerContactVo ownerContactVo = new ownerContactVo();
 		ownerContactVo.setContactid(contactid);
-		
-		
+
 		List noteContactlist = noteDao.getContactNote(ownerContactVo);
 		req.getSession().setAttribute("noteContactlist", noteContactlist);
 		System.out.println("manan");

@@ -19,30 +19,28 @@ public class ContactNoteDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
-	
+
 	public void addcontactNote(ContactNoteVo contactNoteVo) {
-		// TODO Auto-generated method stub
-			try
-			{
-				Session session = sessionFactory.openSession();
-				Transaction tr = session.beginTransaction();
-				session.save(contactNoteVo);
-				tr.commit();
-				session.clear();
-				session.close();
-			}catch (Exception e){
-				e.printStackTrace();
-			}
+		try {
+			Session session = sessionFactory.openSession();
+			Transaction tr = session.beginTransaction();
+			session.save(contactNoteVo);
+			tr.commit();
+			session.clear();
+			session.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+	}
 
 	public List getContactNote(ownerContactVo contactprofilevo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List noteContactlist = new ArrayList();
 		try {
 
-			Query que = session.createQuery("from ContactNoteVo where ownerContactVo = '"+contactprofilevo.getContactid()+"'");
+			Query que = session
+					.createQuery("from ContactNoteVo where ownerContactVo = '" + contactprofilevo.getContactid() + "'");
 			noteContactlist = que.list();
 			tr.commit();
 			session.clear();
@@ -54,13 +52,13 @@ public class ContactNoteDao {
 	}
 
 	public void deleteContactNote(ownerContactVo cvo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 
 		try {
 
-			Query query = session.createQuery("delete from ContactNoteVo where ownerContactVo = '" +cvo.getContactid() + "'");
+			Query query = session
+					.createQuery("delete from ContactNoteVo where ownerContactVo = '" + cvo.getContactid() + "'");
 			query.executeUpdate();
 			System.out.println("manan");
 			tr.commit();
@@ -72,12 +70,10 @@ public class ContactNoteDao {
 	}
 
 	public void deleteNoteContact(ContactNoteVo notevo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 
 		try {
-
 			session.delete(notevo);
 
 			tr.commit();
@@ -87,7 +83,5 @@ public class ContactNoteDao {
 			e.printStackTrace();
 		}
 	}
-
-	
 
 }

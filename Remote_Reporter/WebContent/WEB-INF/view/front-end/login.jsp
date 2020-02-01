@@ -55,9 +55,10 @@
 				<i class="ion-log-in margin-right-5"></i> Sign In to EMA
 			</div>
 			<form id="checkform" method="post" action="j_spring_security_check">
-				<div class="alert bg-teal-500 text-center color-white no-radius no-margin padding-top-15 padding-bottom-30 padding-left-20 padding-right-20">Please sign in to maniac dashboard</div>
+				<div class="alert bg-teal-500 text-center color-white no-radius no-margin padding-top-15 padding-bottom-30 padding-left-20 padding-right-20">Please sign in to EMA dashboard</div>
 				<div class="box-body padding-md">
-<span style="color: red;text-align: center;">					<%
+				<span style="color: red;text-align: center;">
+				<%
 				String  invalid = (String)session.getAttribute("invalid"); 
 					
 					if(invalid != null){
@@ -111,8 +112,6 @@
 	
 	<!-- switchery -->
 	<script src="assets/plugins/switchery/switchery.min.js" type="text/javascript"></script>
-	
-	<!-- maniac -->
 	<script src="assets/js/maniac.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		maniac.loadvalidator();

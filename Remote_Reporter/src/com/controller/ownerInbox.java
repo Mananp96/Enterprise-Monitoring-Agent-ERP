@@ -7,10 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ownerInbox {
-	@RequestMapping(value="/owner_inbox.do",method=RequestMethod.GET)
-	public ModelAndView getreq()
-	{
-		return new ModelAndView("owner/owner_inbox");		
+	@RequestMapping(value = "/owner_inbox.do", method = RequestMethod.GET)
+	public ModelAndView getreq() {
+		return new ModelAndView("owner/owner_inbox");
 	}
 }
-

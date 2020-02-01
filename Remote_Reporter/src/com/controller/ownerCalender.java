@@ -24,46 +24,40 @@ import com.vo.loginVo;
 public class ownerCalender {
 	@Autowired
 	dealDao dealdao;
-	
+
 	@Autowired
 	ownerCompanyDao companyDao;
-	
+
 	@Autowired
 	documentDao documentDao;
-	
+
 	@Autowired
 	ownerContactDao contactDao;
-	
+
 	@Autowired
 	loginDao loginDao;
-	
-	@RequestMapping(value="/ownerCalender.do",method=RequestMethod.GET)
-	public ModelAndView getreq()
-	{
-		
-		
-		return new ModelAndView("owner/calender");		
+
+	@RequestMapping(value = "/ownerCalender.do", method = RequestMethod.GET)
+	public ModelAndView getreq() {
+		return new ModelAndView("owner/calender");
 	}
-	
-	@RequestMapping(value="/dealCalender.do",method=RequestMethod.GET)
-	public ModelAndView getreq(@ModelAttribute dealVo dealvo,HttpServletRequest req)
-	{	
+
+	@RequestMapping(value = "/dealCalender.do", method = RequestMethod.GET)
+	public ModelAndView getreq(@ModelAttribute dealVo dealvo, HttpServletRequest req) {
 		String userName = BaseMethod.getCurrentUser().getUsername();
-		
+
 		loginVo loginVo = new loginVo();
 		loginVo.setUserName(userName);
-		
+
 		int loginId = this.loginDao.getLoginID(loginVo);
-		
+
 		loginVo.setLogid(loginId);
 		dealvo.setLoginVo(loginVo);
-		
-		HttpSession session =req.getSession();
-		List<?> ls=dealdao.viewDeal(dealvo);
+
+		HttpSession session = req.getSession();
+		List<?> ls = dealdao.viewDeal(dealvo);
 		session.setAttribute("dlist", ls);
-		
-		
-		
-		return new ModelAndView("redirect:ownerCalender.do");		
+
+		return new ModelAndView("redirect:ownerCalender.do");
 	}
 }

@@ -8,22 +8,22 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="ADDFile")
+@Table(name = "ADDFile")
 public class FileVo {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int fileId;
-	
-	@Column(name="FileName")
+
+	@Column(name = "FileName")
 	private String fileName;
-	
-	@ManyToOne 
-	private FolderVo folderVo; 
-	
-	@ManyToOne loginVo loginVo;
+
+	@ManyToOne
+	private FolderVo folderVo;
+
+	@ManyToOne
+	loginVo loginVo;
 
 	public loginVo getLoginVo() {
 		return loginVo;
@@ -56,8 +56,4 @@ public class FileVo {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
-
-	
-	
-	
 }

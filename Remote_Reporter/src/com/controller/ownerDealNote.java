@@ -15,19 +15,18 @@ import com.vo.dealVo;
 
 @Controller
 public class ownerDealNote {
-		@Autowired
-		dealDao dealdao;
-		
-		@Autowired
-		dealNoteDao dealnoteDao;
-	
-	//method for add Deal Note
-			@RequestMapping(value="/adddealNote.do",method=RequestMethod.POST)
-			public ModelAndView save(@ModelAttribute dealVo dealvo,HttpServletRequest req)
-			{	
-				dealnoteDao.adddealNote(dealvo);
-				
-				return new ModelAndView("owner/dealProfile","dealprofile",dealnoteDao);
-				
-			}//end of method add Deal note
+	@Autowired
+	dealDao dealdao;
+
+	@Autowired
+	dealNoteDao dealnoteDao;
+
+	// method for add Deal Note
+	@RequestMapping(value = "/adddealNote.do", method = RequestMethod.POST)
+	public ModelAndView save(@ModelAttribute dealVo dealvo, HttpServletRequest req) {
+		dealnoteDao.adddealNote(dealvo);
+
+		return new ModelAndView("owner/dealProfile", "dealprofile", dealnoteDao);
+
+	}// end of method add Deal note
 }

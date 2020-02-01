@@ -9,23 +9,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="contactNote")
+@Table(name = "contactNote")
 public class ContactNoteVo {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int contactNoteid;
-	
-	@Column(name="contactNoteSubject")
+
+	@Column(name = "contactNoteSubject")
 	private String contactNoteSubject;
-	
-	@Column(name="contactNoteDesc")
+
+	@Column(name = "contactNoteDesc")
 	private String contactNoteDesc;
-	
-	@ManyToOne ownerContactVo ownerContactVo;
-		
-	@ManyToOne loginVo loginVo;
-	
+
+	@ManyToOne
+	ownerContactVo ownerContactVo;
+
+	@ManyToOne
+	loginVo loginVo;
+
 	public loginVo getLoginVo() {
 		return loginVo;
 	}
@@ -33,7 +35,7 @@ public class ContactNoteVo {
 	public void setLoginVo(loginVo loginVo) {
 		this.loginVo = loginVo;
 	}
-
+	
 	public int getContactNoteid() {
 		return contactNoteid;
 	}
@@ -65,7 +67,4 @@ public class ContactNoteVo {
 	public void setOwnerContactVo(ownerContactVo ownerContactVo) {
 		this.ownerContactVo = ownerContactVo;
 	}
-
-	
-	
 }

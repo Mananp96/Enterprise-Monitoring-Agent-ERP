@@ -3,20 +3,16 @@ package com.vo;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Documents_folder")
+@Table(name = "Documents_folder")
 public class FolderVo {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 
 	private int folderId;
 
-
-
 	@ManyToOne
 	private loginVo loginVO;
-
-	
 
 	public loginVo getLoginVO() {
 		return loginVO;
@@ -25,10 +21,11 @@ public class FolderVo {
 	public void setLoginVO(loginVo loginVO) {
 		this.loginVO = loginVO;
 	}
-	@Column(name="folderName")
+
+	@Column(name = "folderName")
 	private String folderName;
 
-	@Column(name="parentFolderId")
+	@Column(name = "parentFolderId")
 	private int parentFolderId;
 
 	public int getParentFolderId() {
@@ -42,12 +39,15 @@ public class FolderVo {
 	public int getFolderId() {
 		return folderId;
 	}
+
 	public void setFolderId(int folderId) {
 		this.folderId = folderId;
 	}
+
 	public String getFolderName() {
 		return folderName;
 	}
+
 	public void setFolderName(String folderName) {
 		this.folderName = folderName;
 	}

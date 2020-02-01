@@ -7,11 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ownerProfile {
-	@RequestMapping(value="/profile.do",method=RequestMethod.GET)
-	public ModelAndView getreq()
-	{
-		
-		
-		return new ModelAndView("owner/profile");		
+	@RequestMapping(value = "/profile.do", method = RequestMethod.GET)
+	public ModelAndView getreq() {
+		return new ModelAndView("owner/profile");
 	}
 }

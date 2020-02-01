@@ -16,31 +16,28 @@ import com.dao.dealDao;
 import com.dao.dealNoteDao;
 import com.vo.dealVo;
 
-
-
 @Controller
 public class dealProfile {
-	
+
 	@Autowired
 	dealDao dealdao;
-	
+
 	@Autowired
 	dealNoteDao dealnoteDao;
-	
-	@RequestMapping(value="/viewDealProfile.do",method=RequestMethod.GET)
-	public ModelAndView getreq(HttpServletRequest req)
-	{	
+
+	@RequestMapping(value = "/viewDealProfile.do", method = RequestMethod.GET)
+	public ModelAndView getreq(HttpServletRequest req) {
 		int dealid = Integer.parseInt(req.getParameter("id"));
 		dealVo dealvo = new dealVo();
 		dealvo.setDealid(dealid);
-		List noteDeallist = dealnoteDao.viewDealnote(dealvo);
-		System.out.println("dealNoteList>>>>>>"+noteDeallist);
-		List dealprofile =dealdao.viewDealProfile(dealvo);
-		
-		HttpSession session =req.getSession();
-		session.setAttribute("noteDeallist",noteDeallist);
+		List<?> noteDeallist = dealnoteDao.viewDealnote(dealvo);
+		System.out.println("dealNoteList>>>>>>" + noteDeallist);
+		List<?> dealprofile = dealdao.viewDealProfile(dealvo);
+
+		HttpSession session = req.getSession();
+		session.setAttribute("noteDeallist", noteDeallist);
 		session.setAttribute("dealprofile", dealprofile);
 		return new ModelAndView("owner/dealProfile");
 	}
-	
+
 }

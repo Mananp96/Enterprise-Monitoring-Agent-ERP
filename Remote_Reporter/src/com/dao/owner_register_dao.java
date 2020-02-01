@@ -12,18 +12,16 @@ public class owner_register_dao {
 
 	@Autowired
 	SessionFactory sessionFactory;
-	
+
 	public void insert(owner_register_vo reg) {
-		// TODO Auto-generated method stub
-		try
-		{
+		try {
 			Session session = sessionFactory.openSession();
 			Transaction tr = session.beginTransaction();
 			session.save(reg);
 			tr.commit();
 			session.clear();
 			session.close();
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

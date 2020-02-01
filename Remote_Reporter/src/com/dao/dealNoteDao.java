@@ -13,35 +13,33 @@ import org.springframework.stereotype.Repository;
 
 import com.vo.dealVo;
 
-
 @Repository
 public class dealNoteDao {
+	
 	@Autowired
 	SessionFactory sessionFactory;
 
 	public void adddealNote(dealVo dealvo) {
-			
-		try
-		{
+
+		try {
 			Session session = sessionFactory.openSession();
 			Transaction tr = session.beginTransaction();
 			session.save(dealvo);
 			tr.commit();
 			session.clear();
 			session.close();
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public List viewDealnote(dealVo dealvo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List noteDeallist = new ArrayList();
 		try {
 
-			Query que = session.createQuery("from deaNoteVo where dealVo = '"+dealvo.getDealid()+"'");
+			Query que = session.createQuery("from deaNoteVo where dealVo = '" + dealvo.getDealid() + "'");
 			noteDeallist = que.list();
 			tr.commit();
 			session.clear();

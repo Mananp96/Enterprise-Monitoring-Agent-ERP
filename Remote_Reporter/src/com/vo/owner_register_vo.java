@@ -8,38 +8,37 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="owner_data")
+@Table(name = "owner_data")
 public class owner_register_vo {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int ownerid;
-	
-	@Column(name="First_name")
-	private String firstName;
-	
-	@Column(name="Last_name")
-	private String lastName;
-	
-	@Column(name="company_name")
-	private String companyName;
-	
-	@Column(name="User_name")
-	private String userName;
-	
-	@Column(name="Password")
-	private String password;
-	
-	@Column(name="country_name")
-	private String countryName;
-	
-	@Column(name="company_size")
-	private String cSize;
-	
-	@Column(name="owner_phone")
-	private String phone;
-	
 
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int ownerid;
+
+	@Column(name = "First_name")
+	private String firstName;
+
+	@Column(name = "Last_name")
+	private String lastName;
+
+	@Column(name = "company_name")
+	private String companyName;
+
+	@Column(name = "User_name")
+	private String userName;
+
+	@Column(name = "Password")
+	private String password;
+
+	@Column(name = "country_name")
+	private String countryName;
+
+	@Column(name = "company_size")
+	private String cSize;
+
+	@Column(name = "owner_phone")
+	private String phone;
+
 	public int getOwnerid() {
 		return ownerid;
 	}
@@ -93,7 +92,7 @@ public class owner_register_vo {
 	}
 
 	public void setPass(String pass) {
-		this.password = password;
+		this.password = pass;
 	}
 
 	public String getCountryName() {

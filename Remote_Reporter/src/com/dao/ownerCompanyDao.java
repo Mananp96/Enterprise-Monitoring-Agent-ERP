@@ -19,13 +19,12 @@ public class ownerCompanyDao {
 	SessionFactory sessionFactory;
 
 	public List viewCompany(ownerCompanyVo ownerCompanyVo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List ls = new ArrayList();
 		try {
-
-			Query que = session.createQuery("from ownerCompanyVo where loginVo = '"+ownerCompanyVo.getLoginVo().getLogid()+"'");
+			Query que = session.createQuery(
+					"from ownerCompanyVo where loginVo = '" + ownerCompanyVo.getLoginVo().getLogid() + "'");
 			ls = que.list();
 			tr.commit();
 			session.clear();
@@ -37,22 +36,17 @@ public class ownerCompanyDao {
 	}
 
 	public void insert(ownerCompanyVo vo) {
-		// TODO Auto-generated method stub
-		try
-		{
-			
-			Session session = sessionFactory.openSession();
-			Transaction tr = session.beginTransaction();
+		Session session = sessionFactory.openSession();
+		Transaction tr = session.beginTransaction();
+
+		try {
 			session.save(vo);
 			tr.commit();
 			session.clear();
 			session.close();
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-
-	
-	
 }

@@ -14,39 +14,31 @@ import org.springframework.stereotype.Repository;
 import com.vo.ownerContactVo;
 import com.vo.taskVo;
 
-
-
 @Repository
 public class taskDao {
-		
+
 	@Autowired
 	SessionFactory sessionFactory;
 
 	public void insert(taskVo taskvo) {
-		// TODO Auto-generated method stub
-		try
-		{
+		try {
 			Session session = sessionFactory.openSession();
 			Transaction tr = session.beginTransaction();
 			session.save(taskvo);
 			tr.commit();
 			session.clear();
 			session.close();
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 
-	
 	public List viewTask(taskVo taskVo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List ls = new ArrayList();
 		try {
-
-			Query que = session.createQuery("from taskVo where loginVo = '"+taskVo.getLoginVo().getLogid()+"'");
+			Query que = session.createQuery("from taskVo where loginVo = '" + taskVo.getLoginVo().getLogid() + "'");
 			ls = que.list();
 			tr.commit();
 			session.clear();
@@ -55,19 +47,14 @@ public class taskDao {
 			e.printStackTrace();
 		}
 		return ls;
-		
-		
 	}
 
-
 	public List edit(taskVo taskvo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List editlist = new ArrayList();
 		try {
-
-			Query que = session.createQuery("from taskVo where id = '"+taskvo.getTaskid()+"'");
+			Query que = session.createQuery("from taskVo where id = '" + taskvo.getTaskid() + "'");
 			editlist = que.list();
 			tr.commit();
 			session.clear();
@@ -77,16 +64,13 @@ public class taskDao {
 		}
 		return editlist;
 	}
-	
+
 	public void delete_task(taskVo taskvo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 
 		try {
-
 			session.delete(taskvo);
-
 			tr.commit();
 			session.clear();
 			session.close();
@@ -95,11 +79,7 @@ public class taskDao {
 		}
 	}
 
-	
-
-
 	public void delete_taskattachment(taskVo taskvo) {
-		// TODO Auto-generated method stub
 		try {
 			Session session = sessionFactory.openSession();
 			Transaction tr = session.beginTransaction();
@@ -113,16 +93,12 @@ public class taskDao {
 		}
 	}
 
-
 	public void update_task(taskVo taskvo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 
 		try {
-
 			session.saveOrUpdate(taskvo);
-
 			tr.commit();
 			session.clear();
 			session.close();
@@ -131,15 +107,12 @@ public class taskDao {
 		}
 	}
 
-
 	public void deleteContactTask(ownerContactVo cvo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 
 		try {
-
-			Query query = session.createQuery("delete from taskVo where ownerContactVo = '" +cvo.getContactid() + "'");
+			Query query = session.createQuery("delete from taskVo where ownerContactVo = '" + cvo.getContactid() + "'");
 			query.executeUpdate();
 			System.out.println("manan");
 			tr.commit();
@@ -149,6 +122,4 @@ public class taskDao {
 			e.printStackTrace();
 		}
 	}
-
-
 }

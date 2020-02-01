@@ -9,22 +9,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="dealNote")
+@Table(name = "dealNote")
 public class dealNoteVo {
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int dealNoteid;
-	
-	@Column(name="dealNoteSubject")
+
+	@Column(name = "dealNoteSubject")
 	private String dealNoteSubject;
-	
-	@Column(name="dealNoteDesc")
+
+	@Column(name = "dealNoteDesc")
 	private String dealNoteDesc;
-	
-	@ManyToOne dealVo delvo;
-	
-@ManyToOne loginVo loginVo;
-	
+
+	@ManyToOne
+	dealVo delvo;
+
+	@ManyToOne
+	loginVo loginVo;
+
 	public loginVo getLoginVo() {
 		return loginVo;
 	}
@@ -32,7 +35,6 @@ public class dealNoteVo {
 	public void setLoginVo(loginVo loginVo) {
 		this.loginVo = loginVo;
 	}
-
 
 	public int getDealNoteid() {
 		return dealNoteid;

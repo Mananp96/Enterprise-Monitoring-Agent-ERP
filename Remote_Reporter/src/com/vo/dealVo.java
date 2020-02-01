@@ -1,9 +1,5 @@
 package com.vo;
 
-
-
-
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,41 +11,43 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ownerDeal")
+@Table(name = "ownerDeal")
 public class dealVo {
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int dealid;
-	
 
-	@Column(name="dealName")
+	@Column(name = "dealName")
 	private String dealName;
-	
-	@ManyToOne ownerCompanyVo ownerCompanyVo;
-	
-	@Column(name="dealValue")
+
+	@ManyToOne
+	ownerCompanyVo ownerCompanyVo;
+
+	@Column(name = "dealValue")
 	private String dealValue;
-	
-	@Column(name="milestone")
+
+	@Column(name = "milestone")
 	private String milestone;
-	
-	@Column(name="closeDate")
+
+	@Column(name = "closeDate")
 	private Date closeDate;
-	
-	@Column(name="dealDate")
+
+	@Column(name = "dealDate")
 	private Date dealDate;
-	
-	@ManyToOne ownerContactVo ownerContactVo;
-	
-	
-	@Column(name="tags")
+
+	@ManyToOne
+	ownerContactVo ownerContactVo;
+
+	@Column(name = "tags")
 	private String tags;
-	
-	@Column(name="dealDesc")
+
+	@Column(name = "dealDesc")
 	private String dealDesc;
-	
-@ManyToOne loginVo loginVo;
-	
+
+	@ManyToOne
+	loginVo loginVo;
+
 	public loginVo getLoginVo() {
 		return loginVo;
 	}
@@ -57,7 +55,6 @@ public class dealVo {
 	public void setLoginVo(loginVo loginVo) {
 		this.loginVo = loginVo;
 	}
-
 
 	public int getDealid() {
 		return dealid;
@@ -99,7 +96,6 @@ public class dealVo {
 		this.milestone = milestone;
 	}
 
-
 	public Date getCloseDate() {
 		return closeDate;
 	}
@@ -139,8 +135,4 @@ public class dealVo {
 	public void setDealDesc(String dealDesc) {
 		this.dealDesc = dealDesc;
 	}
-
-	
-	
-	
 }

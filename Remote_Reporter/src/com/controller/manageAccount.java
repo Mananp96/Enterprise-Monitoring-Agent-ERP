@@ -7,15 +7,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class manageAccount {
-	@RequestMapping(value="/view_owner.do",method=RequestMethod.GET)
-	public ModelAndView viewOwner()
-	{
-		return new ModelAndView("admin/view_owner");		
+	@RequestMapping(value = "/view_owner.do", method = RequestMethod.GET)
+	public ModelAndView viewOwner() {
+		return new ModelAndView("admin/view_owner");
 	}
-	
-	@RequestMapping(value="/view_employee.do",method=RequestMethod.GET)
-	public ModelAndView viewEmployee()
-	{
-		return new ModelAndView("admin/view_employee");		
+
+	@RequestMapping(value = "/view_employee.do", method = RequestMethod.GET)
+	public ModelAndView viewEmployee() {
+		return new ModelAndView("admin/view_employee");
 	}
 }

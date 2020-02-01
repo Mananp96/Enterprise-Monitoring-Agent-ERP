@@ -11,45 +11,36 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.vo.ContactNoteVo;
 import com.vo.ownerCompanyVo;
 import com.vo.ownerContactVo;
 
-
 @Repository
 public class ownerContactDao {
-	
+
 	@Autowired
 	SessionFactory sessionFactory;
-	
 
 	public void insert(ownerContactVo cvo) {
-		// TODO Auto-generated method stub
-
-		try
-		{
+		try {
 			Session session = sessionFactory.openSession();
 			Transaction tr = session.beginTransaction();
 			session.save(cvo);
 			tr.commit();
 			session.clear();
 			session.close();
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-
-	
-
-
 	public List viewContact(ownerContactVo ownerContactVo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List ls = new ArrayList();
+
 		try {
-			Query que = session.createQuery("from ownerContactVo where loginVo = '"+ownerContactVo.getLoginVo().getLogid()+"'");
+			Query que = session.createQuery(
+					"from ownerContactVo where loginVo = '" + ownerContactVo.getLoginVo().getLogid() + "'");
 			ls = que.list();
 			tr.commit();
 			session.clear();
@@ -61,13 +52,13 @@ public class ownerContactDao {
 	}
 
 	public List contactProfile(ownerContactVo vo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List ls = new ArrayList();
+
 		try {
 
-			Query que = session.createQuery("from ownerContactVo where id='"+ vo.getContactid()+"'");
+			Query que = session.createQuery("from ownerContactVo where id='" + vo.getContactid() + "'");
 			ls = que.list();
 			tr.commit();
 			session.clear();
@@ -78,17 +69,11 @@ public class ownerContactDao {
 		return ls;
 	}
 
-
-
-
-
 	public void delete_contact(ownerContactVo cvo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 
 		try {
-
 			session.delete(cvo);
 
 			tr.commit();
@@ -99,18 +84,13 @@ public class ownerContactDao {
 		}
 	}
 
-
-
-
-
 	public List edit_contact(ownerContactVo cvo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List ls = new ArrayList();
 		try {
 
-			Query que = session.createQuery("from regV where id='"+ cvo.getContactid()+"'");
+			Query que = session.createQuery("from regV where id='" + cvo.getContactid() + "'");
 			ls = que.list();
 			tr.commit();
 			session.clear();
@@ -121,16 +101,14 @@ public class ownerContactDao {
 		return ls;
 	}
 
-
 	public void update_contact(ownerContactVo cvo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 
 		try {
 
 			session.saveOrUpdate(cvo);
-			
+
 			tr.commit();
 			session.clear();
 			session.close();
@@ -139,25 +117,17 @@ public class ownerContactDao {
 		}
 	}
 
-
-
-
-
 	public void insertFK(ownerCompanyVo companyVo) {
-		// TODO Auto-generated method stub
-
-		try
-		{
+		try {
 			Session session = sessionFactory.openSession();
 			Transaction tr = session.beginTransaction();
 			session.save(companyVo);
 			tr.commit();
 			session.clear();
 			session.close();
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 
 }

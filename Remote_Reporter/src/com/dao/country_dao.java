@@ -19,23 +19,19 @@ public class country_dao {
 	SessionFactory sessionFactory;
 
 	public void insert(country_vo reg) {
-		// TODO Auto-generated method stub
-
-		try
-		{
+		try {
 			Session session = sessionFactory.openSession();
 			Transaction tr = session.beginTransaction();
 			session.save(reg);
 			tr.commit();
 			session.clear();
 			session.close();
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public List viewCountry() {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List ls = new ArrayList();
@@ -53,13 +49,12 @@ public class country_dao {
 	}
 
 	public List edit(country_vo vo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List ls = new ArrayList();
 		try {
 
-			Query que = session.createQuery("from country_vo where id='"+ vo.getCountryid()+"'");
+			Query que = session.createQuery("from country_vo where id='" + vo.getCountryid() + "'");
 			ls = que.list();
 			tr.commit();
 			session.clear();
@@ -71,7 +66,6 @@ public class country_dao {
 	}
 
 	public void delete(country_vo vo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 
@@ -80,17 +74,16 @@ public class country_dao {
 			session.delete(vo);
 
 			tr.commit();
-			
+
 			session.clear();
 			session.close();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void update(country_vo vo) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 
